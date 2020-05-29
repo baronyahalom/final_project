@@ -1,0 +1,130 @@
+<div *ngIf="!showPage">
+<br/>
+<div class="content">
+  <h1>Game tutorial</h1>
+  <h2>Please follow the tutorial in carefully, after you finnish you will get some questions for seeing your understanding</h2>
+  <p><strong><u>Step 1: Learn the object of Hex</u></strong></p>
+  <p>The object of Hex is to create a row of hexes going from one side of the board to the other. You will play with the red Hex, which means you take the
+  the left and right sides of the board, while the computer will play with the blue Hex, which means it takes the top and bottom the board. </p>
+  <img src="assets\board.JPG" width="88%">
+  <p><strong><u>Step 2: play the game, you GO FIRST</u></strong></p>
+  <p>The player who goes first has the advantage in a game, for this experiment you always start with your red Hex.
+    Take turns placing one piece or marking one hex on the board per move.
+    Once a piece is played or a hex has been marked, it stays that way for the rest of the game. Either player may play a piece in any hexagon that is not yet occupied.
+  </p>
+  <img src="assets\play1.JPG" width="88%">
+  <p><strong><u>Step 3: Block your opponent whenever possible.</u></strong></p>
+  <p>One way to increase your chances of winning hex is to prevent your opponent from winning.
+    If your opponent is close to finishing his or her path, then you may need to devote some of your play time to blocking your opponent.
+    You can block your opponent by placing tiles in his path, thereby making it harder for your opponent to win.</p>
+  <img src="assets\block.JPG" width="88%">
+  <p><strong><u>Step 4: Win the game by connecting a row of adjacent hexagons between your two opposite sides.</u></strong></p>
+  <p>The first player to create a path from one of your sides of the board to the opposite side is the winner.
+    Any continuous path will do, and the pieces need not have been placed in any special order. As you can see the winner here is the blue player</p>
+  <img src="assets\win.JPG" width="88%">
+
+
+
+  <form  [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <h2><strong><u>Questions:</u></strong></h2>
+    <p><strong>Who is the winner in the picture?</strong></p>
+    <img src="assets\q1.JPG" width="88%">
+    <br/><br/>
+    <div class="form-row">
+      <div class="form-group col-8">
+        <select formControlName="q1" class="form-control" [ngClass]="{ 'is-invalid': (submitted && wrongAns1)  || (f.q1.errors && f.q1.touched)}">
+          <option value="" disabled>Please choose the right answer</option>
+          <option value="red">Red player is the winner</option>
+          <option value="blue">Blue player is the winner</option>
+          <option value="dont't know">Can't tell who is the winner</option>
+        </select>
+        <div *ngIf="(submitted&& wrongAns1)" class="invalid-feedback">
+          <div *ngIf="wrongAns1 || f.q1.errors.required ">You have to answer the question correctly</div>
+        </div>
+      </div>
+    </div>
+    <p><strong>Is the red player moving in the right direction?</strong></p>
+    <img src="assets\q2.JPG" width="88%">
+    <br/><br/>
+    <div class="form-row">
+      <div class="form-group col-8">
+        <select formControlName="q2" class="form-control" [ngClass]="{ 'is-invalid': ( submitted  && wrongAns2) || (f.q2.errors && f.q2.touched)}">
+          <option value="" disabled>Please choose the right answer</option>
+          <option value="yes">Yes! the red player is moving in right direction</option>
+          <option value="no">No! the red player should be moving from red border to blue border</option>
+          <option value="no2">No! the red player should be moving from red to red borders</option>
+        </select>
+        <div *ngIf="(submitted && wrongAns2)" class="invalid-feedback">
+          <div *ngIf="wrongAns2 || f.q2.errors.required ">You have to answer the question correctly</div>
+        </div>
+      </div>
+    </div>
+    <button id="btn2" >Continue</button>
+  </form>
+
+
+  <br/><br/>
+
+</div>
+
+</div>
+
+<div *ngIf="showPage">
+  <br/>
+  <div class="content" >
+    <h1>Game tutorial</h1>
+    <form  [formGroup]="familiarity" (ngSubmit)="readyFor()">
+      <p id="aaa"><strong><u>Please rate your familiarity and level of expertise with Hex game, prior to this study:</u></strong></p>
+      <div class="form-row">
+        <div class="form-group col-8">
+          <select formControlName="howFamiliar" class="form-control" [ngClass]="{ 'is-invalid': continue || (f2.howFamiliar.errors && f2.howFamiliar.touched)}">
+            <option value="" disabled>please choose the correct answer about you</option>
+            <option value="no">Absolutely no familiarity</option>
+            <option value="Minimal">Minimal familiarity and little to no experience</option>
+            <option value="belowaverage">Below average level of expertise</option>
+            <option value="high">Average level of expertise</option>
+            <option value="aboveaverage">Above average level of expertise</option>
+            <option value="hight">Hight level of expertise</option>
+          </select>
+          <div *ngIf="(continue)" class="invalid-feedback">
+            <div *ngIf="f2.howFamiliar.errors.required ">You have to answer the question correctly</div>
+          </div>
+        </div>
+      </div>
+      <p><strong><u>Stages and Tasks</u></strong></p>
+      <p>First, you will experience the game. As we mentioned before, you will play against an AI opponent.
+      <strong>Your purpose is to win.</strong> The game will last until someone will win.
+      </p>
+      <p>By the time you will play, 1 or 2 questione (depend on your performance quality) will pop.
+        <strong>You have to answer to this questions</strong>
+      </p>
+      <p>After your first try with the game, you will move to the "Game questionnaire" part, which includes questions about the game, and predictions about other participants' performances.
+        <strong>There is only one answer that is correct</strong>
+      </p>
+      <p><strong><u>Buttons</u></strong>
+        <br/>
+        <strong>make a move back</strong>
+        <br/>
+        <img src="assets\makemove.JPG" width="40%">
+        <br/>
+          You can use this button while you are playing the game. This means you can go back one step (before the opposite player played and before your previous move).
+        <strong>The number of times you use the button will be counted and saved.</strong>
+      </p>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h4>Remember you have to play carefully because <strong>your purpose is to win</strong>.</h4>
+
+      <h5><strong>Are you ready to play?</strong></h5>
+      <div class="text-center">
+        <button  id="btn1">Yes I'm ready</button>
+      </div>
+      <br/>
+    </form>
+  </div>
+</div>
+
+

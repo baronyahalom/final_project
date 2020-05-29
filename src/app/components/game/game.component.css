@@ -1,0 +1,85 @@
+body{
+  background-color: antiquewhite;
+}
+
+
+
+#welcomeLogo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+}
+
+#buttons{
+  text-align: center;
+}
+
+.button {
+  background-color: #ce4f71;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin: auto;
+}
+
+
+#button1{
+  background-color: rgba(185, 98, 128, 0.67);
+  color: antiquewhite;
+  border: 2px solid antiquewhite;
+  border-radius: 8px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin: auto;
+
+}
+
+#button1:hover {
+  background-color:antiquewhite;
+  color: rgb(209, 0, 71);
+}
+
+h2{
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  background-color: white;
+
+}
+
+h1{
+  position: relative;
+  font-size: 30px;
+  color: #ffe9e6;
+  margin-left: 2%;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #733949;
+}
+
+.buttonModal{
+  background-color: antiquewhite;
+  color: rgb(209, 0, 71);
+  border: 2px solid #b96280;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.buttonModal:hover {
+  background-color:rgba(155, 0, 50, 0.43);
+  color:antiquewhite;
+}

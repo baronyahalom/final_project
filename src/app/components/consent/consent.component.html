@@ -1,0 +1,33 @@
+
+<br/>
+  <div class="content">
+    <h1>Consent</h1>
+    <h2>Please consider this information carefully before deciding whether to accept this task.</h2>
+    <p><strong><u>PURPOSE OF RESEARCH:</u></strong></p> <p>To examine problem solving performance.</p>
+    <p><strong><u>WHAT YOU WILL DO:</u></strong></p> <p>You will be asked to solve an HEX game problem.</p>
+    <p><strong><u>TIME REQUIRED:</u></strong></p> <p>Participation will take approximately 40-60 minutes.</p>
+    <p><strong><u>RISKS:</u></strong></p> <p>There are no anticipated risks associated with participating in this study. The effects of participating should be
+    comparable to those you would experience from viewing a computer monitor for 60 minutes and using a mouse.</p>
+    <p><strong><u>COMPENSATION:</u></strong></p> <p>Upon completion of this task, you will receive a code to enter on the Amazon Mechanical Turk task page,and you will receive the amount that was indicated on the task page.</p>
+    <p><strong><u>CONFIDENTIALITY:</u></strong></p> <p>Your participation in this study will remain confidential. Your responses will be assigned a code number.
+    You will <strong>NOT</strong> be asked to provide your name. You will be asked to provide your age and gender.
+    Throughout the experiment, we may collect data such as browser type, operating system version, mouse movements, and error rates.
+    The records of this study will be kept private.
+    In any sort of report we make public we will not include any information that will make it possible to identify you without your explicit consent.
+    Research records will be kept in a locked file; only the researchers will have access to the records.</p>
+    <p><strong><u>PARTICIPATION AND WITHDRAWAL:</u></strong></p> <p>Your participation in this study is voluntarily, and you may withdraw and return the task to Amazon Mechanical Turk at any time.
+    <br/>You will receive a compensation only if you complete the task. You may withdraw at any time by closing the web page of the task.</p>
+    <p><strong><u>CONTACT:</u></strong></p> <p>This study is conducted by researchers at the Ben-Gurion University<br>
+    If you have any questions or concerns about this study, please contact <strong>hillash@post.bgu.ac.il</strong></p>
+
+    <h2><strong><u>CONSENT:</u></strong></h2> <p>I have read the above information and the nature and purpose of this research have been sufficiently explained.
+    I consent to take part in the study. I understand that I am free to withdraw at any time.</p>
+
+    <p><input type="checkbox" [(ngModel)]="isAgreed" />I agree to the Terms and Conditions</p>
+    <br/>
+    <div *ngIf="isAgreed">
+    <button id="btn1"  (click)="toDemography()" routerLink="/demograph">Continue</button>
+    </div>
+      <br/><br/>
+  </div>
+

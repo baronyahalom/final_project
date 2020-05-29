@@ -1,0 +1,185 @@
+<div *ngIf="part1">
+  <br/>
+  <div  class="lblGoback">
+  <label >In this part you can go back and play again for practice. </label>
+  <label ><strong> Notice: when you choose to play, you loose all your answers, if you fill them out.</strong></label>
+  <br/>
+    <button  class="btn3" type="button" (click)="playGame()" >I want to play again</button>
+
+  </div>
+  <br/>
+  <div class="content">
+    <h1>Questionnaire part 1</h1>
+    <h2>Please follow the questions carefully, after you click "next", your answers <strong>will be saved</strong> and you will move to the next section of questions.</h2>
+    <form  [formGroup]="questionForm1" (ngSubmit)="onNext1()">
+      <h2><strong><u>Questions:</u></strong></h2>
+      <p><strong>What should be the next step for the red player which secure his victory?</strong></p>
+      <img src="assets\exQ1.jpg" width="88%">
+      <br/><br/>
+      <div class="form-row">
+        <div class="form-group col-10">
+          <select formControlName="q1" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.q1.errors || (f1.q1.errors && f1.q1.touched)}">
+            <option value="" disabled>Please choose your answer</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+            <option value="e">E</option>
+          </select>
+          <div *ngIf="next1&&f1.q1.errors" class="invalid-feedback">
+            <div *ngIf="f1.q1.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>How confident are you in your answers?</strong></p>
+      <div class="form-row">
+        <div class="form-group col-10">
+          <select formControlName="q2" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.q2.errors || (f1.q2.errors && f1.q2.touched)}">
+            <option value="" disabled>1- Very easy 10- Extremely difficult</option>
+            <option *ngFor="let option of options" [ngValue]="option" >{{option}}</option>
+          </select>
+          <div *ngIf="next1&&f1.q2.errors" class="invalid-feedback">
+            <div *ngIf="f1.q2.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>How difficult was it for you to solve this problem?</strong></p>
+      <div class="form-row">
+        <div class="form-group col-10">
+          <select formControlName="q3" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.q3.errors || (f1.q3.errors && f1.q3.touched)}">
+            <option value="" disabled>1- Very easy 10- Extremely difficult</option>
+            <option *ngFor="let option of options" [ngValue]="option" >{{option}}</option>
+          </select>
+          <div *ngIf="next1&&f1.q3.errors" class="invalid-feedback">
+            <div *ngIf="f1.q3.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>In your opinion, how difficult is it for most people to solve this problem?</strong></p>
+      <div class="form-row">
+        <div class="form-group col-10">
+          <select formControlName="q4" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.q4.errors || (f1.q4.errors && f1.q4.touched)}">
+            <option value="" disabled>1- Very easy 10- Extremely difficult</option>
+            <option *ngFor="let option of options" [ngValue]="option" >{{option}}</option>
+          </select>
+          <div *ngIf="next1&&f1.q4.errors" class="invalid-feedback">
+            <div *ngIf="f1.q4.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+      <div class="form-group col-10">
+        <label><strong>How many responders do you estimate, will select the correct answer?</strong></label>
+        <input type="text" placeholder="Number between 0%-100%" formControlName="q5" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.q5.errors || (f1.q5.errors&&f1.q5.touched) }" />
+        <div *ngIf="f1.q5.errors" class="invalid-feedback">
+          <div *ngIf="f1.q5.errors?.pattern || f1.q5.errors.min || f1.q5.errors.max">answer must be between 0-100</div>
+        </div>
+        <div *ngIf="next1&&f1.q5.errors" class="invalid-feedback">
+          <div *ngIf="f1.q5.errors.required ">You have to answer the question</div>
+        </div>
+      </div>
+      </div>
+
+      <label><strong>How many responders do you estimate will select each answer? A number between 0-100%</strong></label>
+      <br/>
+      <div class="worn1" *ngIf="questionForm1.hasError('notValid')">please notice you have left {{100 - f1.A.value - f1.B.value - f1.C.value - f1.D.value - f1.E.value}}% to complete</div>
+      <div class="worn1" *ngIf="questionForm1.hasError('notValid2')">please notice your values are too high, get rid of {{-1*(100 - f1.A.value - f1.B.value - f1.C.value - f1.D.value - f1.E.value)}}% to complete</div>
+      <div class="form-row">
+        <div class="form-group col-2">
+          <input type="text" placeholder="A" formControlName="A" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.A.errors || (f1.A.errors&&f1.A.touched) }" />
+          <div *ngIf="f1.A.errors" class="invalid-feedback">
+            <div *ngIf="f1.A.errors?.pattern || f1.A.errors.min || f1.A.errors.max">answer must be between 0-100</div>
+          </div>
+          <div *ngIf="next1&&f1.A.errors" class="invalid-feedback">
+            <div *ngIf="f1.A.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <input type="text" placeholder="B" formControlName="B" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.B.errors || (f1.B.errors&&f1.B.touched) }" />
+          <div *ngIf="f1.B.errors" class="invalid-feedback">
+            <div *ngIf="f1.B.errors?.pattern || f1.B.errors.min || f1.B.errors.max">answer must be between 0-100</div>
+          </div>
+          <div *ngIf="next1&&f1.B.errors" class="invalid-feedback">
+            <div *ngIf="f1.B.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <input type="text" placeholder="C" formControlName="C" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.C.errors || (f1.C.errors&&f1.C.touched) }" />
+          <div *ngIf="f1.C.errors" class="invalid-feedback">
+            <div *ngIf="f1.C.errors?.pattern || f1.C.errors.min || f1.C.errors.max">answer must be between 0-100</div>
+          </div>
+          <div *ngIf="next1&&f1.C.errors" class="invalid-feedback">
+            <div *ngIf="f1.C.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <input type="text" placeholder="D" formControlName="D" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.D.errors || (f1.D.errors&&f1.D.touched) }" />
+          <div *ngIf="f1.D.errors" class="invalid-feedback">
+            <div *ngIf="f1.D.errors?.pattern || f1.D.errors.min || f1.D.errors.max">answer must be between 0-100</div>
+          </div>
+          <div *ngIf="next1&&f1.D.errors" class="invalid-feedback">
+            <div *ngIf="f1.D.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <input type="text" placeholder="E" formControlName="E" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.E.errors || (f1.E.errors&&f1.E.touched) }" />
+          <div *ngIf="f1.E.errors" class="invalid-feedback">
+            <div *ngIf="f1.E.errors?.pattern || f1.E.errors.min || f1.E.errors.max">answer must be between 0-100</div>
+          </div>
+          <div *ngIf="next1&&f1.E.errors" class="invalid-feedback">
+            <div *ngIf="f1.E.errors.required ">You have to answer the question</div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-10">
+          <label><strong>Now we will show you data about others answers for this question:</strong></label>
+          <p>23% of the responders choose A </p>
+          <p>20% of the responders choose B </p>
+          <p>15% of the responders choose C </p>
+          <p>24% of the responders choose D </p>
+          <p>18% of the responders choose E </p>
+          <label><strong>Now, do you want to change you first answer?</strong></label><button *ngIf="!changeANS1" class="btn1" type="button" (click)="changAns1(true)" >Yes. I want to change my answer</button>
+
+          <div *ngIf="changeANS1">
+
+            <p><strong>What should be the next step for the red player which secure his victory?</strong></p>
+            <select formControlName="q6" class="form-control" [ngClass]="{ 'is-invalid': next1&&f1.q6.errors || (f1.q6.errors && f1.q6.touched)}">
+              <option value="" disabled>Please choose your answer</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="d">D</option>
+              <option value="e">E</option>
+            </select>
+            <br/>
+            <button *ngIf="changeANS1" class="btn1" type="button" (click)="changAns1(false)" >I regret. I don't want to change my answer</button>
+            <div *ngIf="next1&&f1.q6.errors" class="invalid-feedback">
+              <div *ngIf="f1.q6.errors.required ">You have to answer the question</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<br/>
+      <button class="btn2" type="submit">Continue</button>
+    </form>
+
+    <br/><br/>
+
+  </div>
+
+</div>
+
+
+
