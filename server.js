@@ -31,22 +31,24 @@ app.listen(PORT, () => {
 });
 
 
- const db = require("./app/models");
-//  db.mongoose
-//    .connect(db.url, {
-//      useNewUrlParser: true,
-//      useUnifiedTopology: true
-//    })
-//    .then(() => {
-//      console.log("Connected to the database!");
-//    })
-//    .catch(err => {
-//      console.log("Cannot connect to the database!", err);
-//      process.exit();
-//    });
+const db = process.env.MONGODB_URL;
 
-   db.mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
-   const conn = mongoose.connection;
-   mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
-   mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err); }); 
-   
+const connectDB = async () => {
+  try {
+    await mongoose.connect(db, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    console.log("MongoDB is Connected...");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+
+   // cors origin URL - Allow inbound traffic from origin
+corsOptions = {
+  origin: "https://final-project-hex.herokuapp.com/",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
