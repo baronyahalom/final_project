@@ -18,10 +18,10 @@ var distDir = __dirname + "/client/dist/";
 app.use(express.static(distDir));
 
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to hex application." });
-});
+// // simple route
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to hex application." });
+// });
 
 require("./app/routes/user.routes.js")(app);
 require("./app/routes/opStrategy.routs.js")(app);
